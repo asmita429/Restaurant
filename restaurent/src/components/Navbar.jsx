@@ -9,17 +9,19 @@ import { BsFillCartFill, BsFillSaveFill } from "react-icons/bs";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FaUserFriends, FaWallet } from "react-icons/fa";
 import { MdFavorite, MdHelp } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
 
   return (
-    <div className="max-w-[1640px] mx-auto flex justify-between items-center p-4">
+    <div className="max-w-[1640px] mx-auto flex justify-between items-center p-4 dark:bg-neutral-700 dark:text-white">
       {/* left menu */}
       <div className="flex items-center">
         <div onClick={() => setNav(!nav)} className="cursor-pointer">
           <AiOutlineMenu size={30} />
         </div>
+
         <h1 className="text-2xl sm:text-3xl lg:text-4xl px-2">
           Best <span className="font-bold">Meals</span>
         </h1>
@@ -40,9 +42,11 @@ const Navbar = () => {
       </div>
 
       {/* cart button */}
-      <button className="bg-black text-white hidden md:flex items-center py-2 rounded-full">
-        <BsFillCartFill size={20} className="mr-2" /> Cart
-      </button>
+      <Link to="/cart">
+        <button className="bg-black text-white hidden md:flex items-center py-2 rounded-full">
+          <BsFillCartFill size={20} className="mr-2" /> Cart
+        </button>
+      </Link>
 
       {/* mobile menu */}
       {/* Delivery */}

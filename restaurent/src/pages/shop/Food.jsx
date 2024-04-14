@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-import { data } from "../data/data.js";
+import React, { useContext, useState } from "react";
+import { data } from "../../data/data.js";
+import { ShopContext } from "../../context/shop-context.jsx";
 
 const Food = () => {
+  const { addToCart, cartItems } = useContext(ShopContext);
+
   //   console.log(data);
   const [foods, setFoods] = useState(data);
 
@@ -73,28 +76,28 @@ const Food = () => {
           <p className="font-bold text-gray-700">Filter Price</p>
           <div className="flex justify-between max-w-[390px] w-full">
             <button
-              onClick={() => filterPrice("$")}
+              onClick={() => filterPrice(100)}
               className="m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
             >
-              $
+              $100
             </button>
             <button
-              onClick={() => filterPrice("$$")}
+              onClick={() => filterPrice(200)}
               className="m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
             >
-              $$
+              $200
             </button>
             <button
-              onClick={() => filterPrice("$$$")}
+              onClick={() => filterPrice(300)}
               className="m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
             >
-              $$$
+              $300
             </button>
             <button
-              onClick={() => filterPrice("$$$$")}
+              onClick={() => filterPrice(400)}
               className="m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
             >
-              $$$$
+              $400
             </button>
           </div>
         </div>
@@ -114,6 +117,7 @@ const Food = () => {
             />
             <div className="flex justify-between px-2 py-4">
               <p className="font-bold">{item.name}</p>
+              <button onClick={() => addToCart(item.id)}>Order Now</button>
               <p>
                 <span className="bg-orange-500 text-white p-1 rounded-full">
                   {item.price}
